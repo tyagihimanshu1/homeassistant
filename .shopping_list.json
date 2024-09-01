@@ -1,0 +1,32 @@
+[
+  {
+    "name": "exclude things from homekit",
+    "id": "6ee7da1549714b969dd614af18d6b6c4",
+    "complete": true
+  },
+  {
+    "name": "fix state-iphone",
+    "id": "b1ff41aa415c414ab3a97df4634f71fd",
+    "complete": false
+  },
+  {
+    "name": "why tv unresponsive",
+    "id": "60eaa43254a24025b4b0150b07d8d55a",
+    "complete": true
+  },
+  {
+    "name": "fix office automation",
+    "id": "1eda6d7179db4d3abcb3e3a426ea1746",
+    "complete": true
+  },
+  {
+    "name": "macbook air battery charge automation",
+    "id": "fa296505388c4dcca5ef990d1b498b00",
+    "complete": false
+  },
+  {
+    "name": "sensor based automations like turn on and off office spaces/ living room lights on and offf",
+    "id": "5c318f3bb45349fb8292388cf70c5b3e",
+    "complete": false
+  }
+]

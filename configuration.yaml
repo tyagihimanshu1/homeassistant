@@ -1,0 +1,48 @@
+# Loads default set of integrations. Do not remove.
+default_config:
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named themes
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+zone:
+  - name: Home
+    latitude: 52.24817347652137
+    longitude: 4.827917218884493
+    radius: 11
+    icon: mdi:account-multiple
+
+homekit:
+  - name: Homekit HA bridge
+    port: 51828
+  - filter:
+      include_entities:
+        - media_player.living_room_tv_2
+        - light.wiz_tunable_white_52f25d
+        - light.wiz_tunable_white_52efa1
+        - light.wiz_tunable_white_52f07f
+        - switch.smart_plug_ht_switch
+        - switch.smart_plug_gr_switch
+        - switch.smart_plug_tv_lights_switch_2
+        - light.nabu_casa_skyconnect_v1_0_kitchen_spots
+    entity_config:
+      media_player.living_room_tv_2:
+        name: Sony Bravia LR
+      light.wiz_tunable_white_52f25d:
+        name: Eclipse Light LR
+      light.wiz_tunable_white_52efa1:
+        name: Eclipse Light Front
+      light.wiz_tunable_white_52f07f:
+        name: Eclipse Light Back
+      switch.smart_plug_ht_switch:
+        name: Himanshu's office
+      switch.smart_plug_gr_switch:
+        name: Gunjan's office
+      switch.smart_plug_tv_lights_switch_2:
+        name: TV Lights LR
+      light.nabu_casa_skyconnect_v1_0_kitchen_spots:
+        name: Kitchen spot lights

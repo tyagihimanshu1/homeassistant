@@ -1,0 +1,96 @@
+- id: "1723844171349"
+  alias: Turn on lights in living room and kitchen area
+  description: ""
+  trigger:
+    - platform: sun
+      event: sunset
+      offset: -01:00:01
+  condition: []
+  action:
+    - service: light.turn_on
+      target:
+        entity_id:
+          - light.wiz_tunable_white_52f25d #Eclipse Light front
+          - light.wiz_tunable_white_52efa1 #Eclipse Light back
+          - light.wiz_tunable_white_52f07f #Eclipse Light LR
+          - light.nabu_casa_skyconnect_v1_0_kitchen_spots
+    - service: switch.turn_on
+      target:
+        entity_id:
+          - switch.smart_plug_tv_lights_switch_2
+  mode: single
+
+- id: "1723847123754"
+  alias: Turn off lights in living room and kitchen area
+  description: ""
+  trigger:
+    - platform: time
+      at: "22:30:00"
+    - platform: time
+      at: "08:30:00"
+  condition:
+    - condition: state
+      entity_id:
+        - light.wiz_tunable_white_52f25d
+        - light.wiz_tunable_white_52efa1
+        - light.wiz_tunable_white_52f07f
+        - light.nabu_casa_skyconnect_v1_0_kitchen_spots
+        - switch.smart_plug_tv_lights_switch_2
+      state: "on"
+  action:
+    - service: light.turn_off
+      target:
+        entity_id:
+          - light.wiz_tunable_white_52f25d
+          - light.wiz_tunable_white_52efa1
+          - light.wiz_tunable_white_52f07f
+          - light.nabu_casa_skyconnect_v1_0_kitchen_spots
+    - service: switch.turn_off
+      target:
+        entity_id:
+          - switch.smart_plug_tv_lights_switch_2
+  mode: single
+
+- id: "1723847123755"
+  alias: Turn on devices in Himanshu's office
+  description: ""
+  trigger:
+    - platform: time
+      at: "08:55:00"
+  condition:
+    - condition: time
+      weekday:
+        - tue
+        - wed
+        - thu
+        - fri
+  action:
+    - service: switch.turn_on
+      target:
+        entity_id:
+          - switch.smart_plug_ht_switch
+  mode: single
+
+- id: "1723847123855"
+  alias: Turn off extra lights when its TV time and dark outside
+  description: "Turn off extra lights when its TV time and dark outside"
+  trigger:
+    - platform: state
+      entity_id: media_player.living_room_tv_2
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: sun.sun
+      state: "below_horizon"
+    - condition: state
+      entity_id:
+        - light.wiz_tunable_white_52f07f
+        - light.nabu_casa_skyconnect_v1_0_kitchen_spots
+      state: "on"
+  action:
+    - service: light.turn_off
+      target:
+        entity_id:
+          - light.wiz_tunable_white_52f07f
+          - light.nabu_casa_skyconnect_v1_0_kitchen_spots
+  mode: single
