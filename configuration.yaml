@@ -11,9 +11,9 @@ scene: !include scenes.yaml
 
 zone:
   - name: Home
-    latitude: 52.24817347652137
-    longitude: 4.827917218884493
-    radius: 11
+    latitude: !secret home_lat
+    longitude: !secret home_lon
+    radius: !secret home_rad
     icon: mdi:account-multiple
 
 homekit:
